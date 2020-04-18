@@ -34,7 +34,7 @@ public class GuiList extends AbstractOptionList<KeyBindingList.Entry> {
         Arrays.sort(keyBindings);
 
         addEntry(new CategoryEntry(""));//dummy for better position of following category
-        addEntry(new CategoryEntry("Bitte Button anklicken um Befehl zu hinterlegen"));
+        addEntry(new CategoryEntry(I18n.format("key.guilist.text")));
 
         for (KeyBinding keybinding : keyBindings) {
             String category = keybinding.getKeyCategory();

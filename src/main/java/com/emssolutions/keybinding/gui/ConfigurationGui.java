@@ -7,6 +7,7 @@ import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.gui.widget.button.Button;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.text.StringTextComponent;
 
@@ -41,15 +42,16 @@ public class ConfigurationGui extends Screen {
 
     @Override
     public void init() {
-        addButton( new Button(this.width / 2 - 4 - 150, 80, 150, 20, "Speichern", (screen) ->
+        super.init();
+        addButton( new Button(this.width / 2 - 4 - 150, 80, 150, 20, I18n.format("key.save"), (screen) ->
             saveMapping()
         ));
-        addButton( new Button(this.width / 2 + 4, 80, 150, 20, "Abbruch",
+        addButton( new Button(this.width / 2 + 4, 80, 150, 20, I18n.format("key.cancel"),
                 (screen) -> Minecraft.getInstance().displayGuiScreen(null) ));
-        textCommand = new TextFieldWidget(this.font, this.width / 2 - 150, 50, 300, 20, "Befehl eingeben");
+        textCommand = new TextFieldWidget(this.font, this.width / 2 - 150, 50, 300, 20, "CommandField");
         textCommand.setMaxStringLength(32767);
         textCommand.changeFocus(true);
-        textCommand.setText("");
+        textCommand.setText(load(MAPPING_FILE).orElse(new KeyMapping()).getCommandMap().getOrDefault(keyBinding.getKeyDescription(), "z.B. /p h"));
     }
 
     @Override

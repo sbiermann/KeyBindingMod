@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[31,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+loaderVersion="[31,)"
 [[mods]]
 modId="keybindingmod"
 version="${file.jarVersion}"
@@ -11,7 +11,7 @@ Keybinding Mod für 1.15.2 Minecraft
 [[dependencies.keybindingmod]]
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[31,)" #mandatory
+    versionRange="[31,)"
     ordering="NONE"
     side="CLIENT"
 [[dependencies.keybindingmod]]
